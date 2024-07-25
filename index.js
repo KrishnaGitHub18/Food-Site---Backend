@@ -19,8 +19,8 @@ app.use(
   }
 )
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get('/', (req, res) => { 
+  res.send("Backend server is running!");
 });
 
 app.use(express.json());
