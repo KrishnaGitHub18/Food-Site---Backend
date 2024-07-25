@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backend Server</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #333, #444, #555, #666, #777);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      animation: textFade 5s ease infinite alternate;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes textFade {
+      from { opacity: 1; }
+      to { opacity: 0.8; }
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .container a {
+        color: rgb(136, 244, 252)
+    }
+  </style>
+</head>
+<body>
+  <div class="container">   
+    <!-- <h1>Backend server is running!</h1> -->
+    <h2>Itni acchi website hai aur tujhe backend page me hi aana hai? Ye le bhai website ki link</h2>
+    <a href="https://food-way.vercel.app/">FoodWay - Khaana mangaao aur khaao</a>
+  </div>
+</body>
+</html>
