@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const jwtSecret = "dc3d2#829ece#e64f05c2e6f3f#16da39$8daa9$9mft#vdfe28a313f3788f7ad";
 
 //Login an existing user
 router.post(
@@ -20,18 +23,31 @@ router.post(
         
         try {
             let email = req.body.email;
-            let checkData = await User.findOne({ email }); 
+            let checkData = await User.findOne({ email }); //This is an object consisting complete data of an user if matched
             // console.log(email, checkData, User.email);
             if (!checkData) {
             return res.status(400).json({ errors: "2 Incorrect email password combination" });
             }
 
             let givenPassword = req.body.password;
-            if (givenPassword !== checkData.password) {
+            const checkPassword = await bcrypt.compare(givenPassword, checkData.password);
+            if (!checkPassword) {
             return res.status(400).json({ errors: "1 Incorrect email password combination" });
             }
 
-            res.status(200).json({ success: true });
+            //data for jwt auth
+            const data = {
+                user: {
+                    id: checkData.id
+                }
+            }
+            const authToken = jwt.sign(data, jwtSecret);
+            res.status(200).json(
+                { 
+                    success: true,
+                    authToken: authToken 
+                }
+            );
 
         } catch (error) {
             console.log("3 Error in registering the new user", error);
