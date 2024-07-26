@@ -9,8 +9,8 @@ const port = 5000;
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    // "http://localhost:3000"
-    "https://food-way.vercel.app/"
+    "http://localhost:3000"
+    // "https://food-way.vercel.app/"
   );
   res.header(
     "Access-Control-Allow-Headers",
@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 app.use(express.json());
 
 app.use('/api', require('./routes/Register'));
+app.use('/api', require('./routes/Login'));
 
 mongoDB();
 

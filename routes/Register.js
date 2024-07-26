@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 
+
+//Create a new user
 router.post(
     '/register',
     [
