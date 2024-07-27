@@ -6,21 +6,27 @@ const mongoDB = async () => {
         await mongoose.connect(mongoURI);
         console.log("Connected to MongoDB");
 
-        const foodItems = mongoose.connection.db.collection("FoodItems");
-        const data = await foodItems.find({}).toArray();
 
-        if (data) console.log("Food-items data fetched successfully");
-        else console.log("Error in fetching the data");
+        //Food Items Data
+        const fetched_foodItems = mongoose.connection.db.collection("FoodItems");
+        const foodItemsData = await fetched_foodItems.find({}).toArray();
+        if (foodItemsData){
+            global.foodItems = foodItemsData;
+            console.log("Food-items data fetched successfully");
+        }
+        else console.log("Error in fetching the food items data");
 
-        // const foodItems = mongoose.connection.db.collection("FoodItems");
-        // foodItems.find({}).toArray((err, data) => {
-        //     if (err) {
-        //         console.error("Error fetching data:", err);
-        //     } else {
-        //         console.log("Data fetched successfully:", data);
-        //     }
-        // });
-    
+
+        //Food Category Data
+        const fetched_foodCategory = mongoose.connection.db.collection("FoodCategories");
+        const foodCategoryData = await fetched_foodCategory.find({}).toArray();
+        if (foodCategoryData){
+            global.foodCategory = foodCategoryData;
+            console.log("Food-category data fetched successfully");
+        }
+        else console.log("Error in fetching the food category data");
+
+        
     } catch (err) {
         console.error("Error connecting to MongoDB:", err);
     }

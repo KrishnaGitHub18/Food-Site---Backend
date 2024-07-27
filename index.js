@@ -27,6 +27,7 @@ app.use(express.json());
 
 app.use('/api', require('./routes/Register'));
 app.use('/api', require('./routes/Login'));
+app.use('/api', require('./routes/DisplayData'));
 
 mongoDB();
 
