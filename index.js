@@ -1,23 +1,13 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors'); // Import the cors package
 const mongoDB = require('./database');
 
 const app = express();
 const port = 5000;
 
-//CORS
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    // "http://localhost:3000",
-    "https://food-way.vercel.app/"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+// CORS
+app.use(cors()); // Use the cors middleware
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './pages/backend-home.html'));
