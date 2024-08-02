@@ -9,8 +9,8 @@ const port = 5000;
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "http://localhost:3000"
-    // "https://food-way.vercel.app/"
+    "http://localhost:3000",
+    "https://food-way.vercel.app/"
   );
   res.header(
     "Access-Control-Allow-Headers",
