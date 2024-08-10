@@ -26,13 +26,13 @@ router.post(
             let checkData = await User.findOne({ email }); //This is an object consisting complete data of an user if matched
             // console.log(email, checkData, User.email);
             if (!checkData) {
-            return res.status(400).json({ errors: "2 Incorrect email password combination" });
+                return res.status(400).json({ errors: "2 Incorrect email password combination" });
             }
 
             let givenPassword = req.body.password;
             const checkPassword = await bcrypt.compare(givenPassword, checkData.password);
             if (!checkPassword) {
-            return res.status(400).json({ errors: "1 Incorrect email password combination" });
+                return res.status(400).json({ errors: "1 Incorrect email password combination" });
             }
 
             //data for jwt auth
