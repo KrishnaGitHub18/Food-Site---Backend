@@ -4,7 +4,7 @@ const cors = require('cors'); // Import the cors package
 const mongoDB = require('./database');
 
 const app = express();
-const port = 5000;
+const port = 3000;
 
 // CORS
 app.use(cors()); // Use the cors middleware
